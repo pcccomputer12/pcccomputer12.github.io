@@ -7,25 +7,323 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-F52Q55JLSR"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F52Q55JLSR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F52Q55JLSR');
+  </script>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Param Computer Centre – Ludhiana | Computer Courses & Digital Services</title>
+  <meta name="description" content="Param Computer Centre – 6 years of trusted computer education in Giaspura, Ludhiana. DCA, ADCA, Tally ERP 9, Banking, Aadhar, PAN services.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Hind:wght@300;400;500;600&family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 
-  gtag('config', 'G-F52Q55JLSR');
-</script>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Param Computer Centre – Ludhiana | Computer Courses & Digital Services</title>
-<meta name="description" content="Param Computer Centre – 6 years of trusted computer education in Giaspura, Ludhiana. DCA, ADCA, Tally ERP 9, Banking, Aadhar, PAN services.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Hind:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <!-- ── HERO CAROUSEL STYLES ── -->
+  <style>
+    :root {
+      --c-navy: #0d1b2a;
+      --c-gold: #e8a020;
+      --c-gold-light: #f5c842;
+      --slide-h: 520px;
+    }
+
+    .hero-c {
+      position: relative;
+      width: 100%;
+      height: var(--slide-h);
+      overflow: hidden;
+      background: var(--c-navy);
+    }
+
+    /* TRACK */
+    .c-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.7s cubic-bezier(0.77,0,0.175,1);
+      will-change: transform;
+    }
+
+    /* SLIDE */
+    .slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .slide img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: brightness(0.42) saturate(1.1);
+      transition: transform 8s ease;
+      transform: scale(1.06);
+    }
+    .slide.active img { transform: scale(1); }
+
+    /* colour overlay per slide */
+    .slide::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 1;
+      mix-blend-mode: multiply;
+    }
+    .slide:nth-child(1)::before { background: linear-gradient(135deg,#0d1b2acc,#1a3a5c88); }
+    .slide:nth-child(2)::before { background: linear-gradient(135deg,#1a0a2ecc,#3d1a6088); }
+    .slide:nth-child(3)::before { background: linear-gradient(135deg,#0a2e1acc,#0d5c3d88); }
+    .slide:nth-child(4)::before { background: linear-gradient(135deg,#2e0a0acc,#7a1a1a88); }
+    .slide:nth-child(5)::before { background: linear-gradient(135deg,#0a1e2ecc,#1a4a6088); }
+
+    /* gradient vignette */
+    .slide::after {
+      content: '';
+      position: absolute; inset: 0; z-index: 2;
+      background: linear-gradient(to right, rgba(13,27,42,.82) 0%, rgba(13,27,42,.2) 55%, rgba(13,27,42,.55) 100%);
+    }
+
+    /* SLIDE CONTENT */
+    .slide-content {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 58%;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 48px 52px;
+      gap: 14px;
+    }
+
+    .slide-tag {
+      display: inline-flex;
+      align-items: center;
+      background: var(--c-gold);
+      color: var(--c-navy);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: 5px 13px;
+      border-radius: 2px;
+      width: fit-content;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .55s .15s, transform .55s .15s;
+    }
+
+    .slide-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 4vw, 42px);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.18;
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .6s .25s, transform .6s .25s;
+    }
+    .slide-headline em {
+      font-style: italic;
+      color: var(--c-gold-light);
+    }
+
+    .slide-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,.72);
+      line-height: 1.7;
+      max-width: 380px;
+      font-weight: 300;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .6s .38s, transform .6s .38s;
+    }
+
+    .slide-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 6px;
+      padding: 11px 26px;
+      border: 1.5px solid var(--c-gold);
+      color: var(--c-gold);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      background: transparent;
+      width: fit-content;
+      border-radius: 2px;
+      text-decoration: none;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .6s .5s, transform .6s .5s, background .25s, color .25s;
+    }
+    .slide-cta:hover { background: var(--c-gold); color: var(--c-navy); }
+
+    .slide.active .slide-tag,
+    .slide.active .slide-headline,
+    .slide.active .slide-desc,
+    .slide.active .slide-cta {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* LOGO BADGE */
+    .c-logo-side {
+      position: absolute;
+      right: 44px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .c-logo-circle {
+      width: 118px; height: 118px;
+      border-radius: 50%;
+      border: 2.5px solid var(--c-gold);
+      background: rgba(13,27,42,.88);
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      box-shadow: 0 0 0 6px rgba(232,160,32,.12), 0 8px 32px rgba(0,0,0,.45);
+    }
+
+    .clc-big {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 900;
+      color: var(--c-gold);
+      letter-spacing: .06em;
+      line-height: 1;
+    }
+
+    .clc-small {
+      font-size: 7.5px;
+      color: rgba(255,255,255,.7);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 0 10px;
+      line-height: 1.4;
+    }
+
+    .c-since {
+      font-size: 10px;
+      color: rgba(255,255,255,.45);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    /* ARROWS */
+    .c-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 30;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,.22);
+      background: rgba(13,27,42,.6);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color .2s, background .2s;
+    }
+    .c-arrow:hover { border-color: var(--c-gold); background: rgba(232,160,32,.18); }
+    #c-prev { left: 18px; }
+    #c-next { right: 155px; }
+
+    /* DOTS */
+    .c-dots {
+      position: absolute;
+      bottom: 22px;
+      left: 52px;
+      z-index: 30;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .c-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.3);
+      cursor: pointer;
+      transition: background .3s, width .3s;
+    }
+    .c-dot.active {
+      background: var(--c-gold);
+      width: 22px;
+      border-radius: 3px;
+    }
+
+    /* COUNTER */
+    .c-counter {
+      position: absolute;
+      bottom: 18px;
+      right: 165px;
+      z-index: 30;
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      color: rgba(255,255,255,.45);
+      letter-spacing: .1em;
+    }
+    .c-counter b { color: var(--c-gold); font-size: 18px; font-weight: 700; }
+
+    /* PROGRESS BAR */
+    .c-progress {
+      position: absolute;
+      bottom: 0; left: 0;
+      height: 3px;
+      background: var(--c-gold);
+      z-index: 30;
+      width: 0%;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      :root { --slide-h: 420px; }
+      .slide-content { width: 100%; padding: 32px 24px; }
+      .c-logo-side { right: 16px; top: 18px; transform: none; }
+      .c-logo-circle { width: 80px; height: 80px; }
+      .clc-big { font-size: 20px; }
+      #c-next { right: 100px; }
+      .c-counter { display: none; }
+    }
+
+    /* SERVICE ICON CARDS */
+    .sv-ico-card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 10px;
+      text-align: center;
+      transition: transform .2s;
+    }
+    .sv-ico-card:hover { transform: translateY(-4px); border-color: var(--amber); }
+    .sv-ico-card span { font-size: 2rem; display: block; margin-bottom: 6px; }
+    .sv-ico-card p { font-size: .82rem; font-weight: 600; color: var(--navy); }
+  </style>
 </head>
 <body data-page="home">
 
 <!-- LOADER -->
-<div id="loader"><div class="ld-logo">PCC</div><div class="ld-bar"><div class="ld-fill"></div></div><div class="ld-txt">PARAM COMPUTER CENTRE</div></div>
+<div id="loader">
+  <div class="ld-logo">PCC</div>
+  <div class="ld-bar"><div class="ld-fill"></div></div>
+  <div class="ld-txt">PARAM COMPUTER CENTRE</div>
+</div>
 
 <!-- NAVBAR -->
 <header id="navbar">
@@ -46,9 +344,12 @@
   </div>
 </header>
 
-<!-- HERO CAROUSEL -->
+<!-- ══════════════════════════════════════════
+     HERO CAROUSEL (upgraded)
+══════════════════════════════════════════ -->
 <section class="hero-c">
   <div class="c-track" id="carousel-track"></div>
+
   <div class="c-logo-side">
     <div class="c-logo-circle">
       <span class="clc-big">PCC</span>
@@ -56,10 +357,130 @@
     </div>
     <div class="c-since">Est. 2018 · Giaspura</div>
   </div>
+
   <button class="c-arrow" id="c-prev">&#8592;</button>
   <button class="c-arrow" id="c-next">&#8594;</button>
   <div class="c-dots" id="carousel-dots"></div>
+  <div class="c-counter"><b id="cur-num">1</b> / <span id="tot-num">5</span></div>
+  <div class="c-progress" id="c-progress"></div>
 </section>
+
+<!-- Carousel JS (self-contained, runs before app.js) -->
+<script>
+(function () {
+  const SLIDES = [
+    {
+      img: "https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=1400&q=80&auto=format&fit=crop",
+      tag: "Computer Courses",
+      headline: "Master the <em>Digital World</em>",
+      desc: "From basics to advanced computing — structured courses designed for every learner at Param Computer Centre.",
+      cta: "Explore Courses",
+      href: "courses.html"
+    },
+    {
+      img: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1400&q=80&auto=format&fit=crop",
+      tag: "Skill Development",
+      headline: "Build Skills That <em>Last a Lifetime</em>",
+      desc: "Practical, hands-on training in MS Office, Tally, DTP, and programming — skills employers demand.",
+      cta: "View Programs",
+      href: "courses.html"
+    },
+    {
+      img: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1400&q=80&auto=format&fit=crop",
+      tag: "Certified Training",
+      headline: "Earn <em>Government-Recognised</em> Certificates",
+      desc: "Accredited certification programs that open doors to better career opportunities across Punjab and beyond.",
+      cta: "Get Certified",
+      href: "courses.html"
+    },
+    {
+      img: "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=1400&q=80&auto=format&fit=crop",
+      tag: "Youth Empowerment",
+      headline: "Young Minds, <em>Bright Futures</em>",
+      desc: "Dedicated batches for school students, college graduates, and working professionals — learn at your pace.",
+      cta: "Join a Batch",
+      href: "contact.html"
+    },
+    {
+      img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1400&q=80&auto=format&fit=crop",
+      tag: "Online & Offline",
+      headline: "Learn <em>Your Way</em>, Your Schedule",
+      desc: "Flexible timings, expert faculty, and a supportive environment — Param Computer Centre, Giaspura.",
+      cta: "Contact Us",
+      href: "contact.html"
+    }
+  ];
+
+  const INTERVAL = 5000;
+  let current = 0, timer = null;
+
+  const track   = document.getElementById('carousel-track');
+  const dotsEl  = document.getElementById('carousel-dots');
+  const curNum  = document.getElementById('cur-num');
+  const totNum  = document.getElementById('tot-num');
+  const progress = document.getElementById('c-progress');
+
+  totNum.textContent = SLIDES.length;
+
+  // Build slides
+  SLIDES.forEach(function (s, i) {
+    var slide = document.createElement('div');
+    slide.className = 'slide' + (i === 0 ? ' active' : '');
+    slide.innerHTML =
+      '<img src="' + s.img + '" alt="' + s.tag + '" loading="' + (i === 0 ? 'eager' : 'lazy') + '">' +
+      '<div class="slide-content">' +
+        '<span class="slide-tag">' + s.tag + '</span>' +
+        '<h2 class="slide-headline">' + s.headline + '</h2>' +
+        '<p class="slide-desc">' + s.desc + '</p>' +
+        '<a class="slide-cta" href="' + s.href + '">' + s.cta + ' &rarr;</a>' +
+      '</div>';
+    track.appendChild(slide);
+
+    var dot = document.createElement('div');
+    dot.className = 'c-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', function () { clearInterval(timer); goTo(i); startAuto(); });
+    dotsEl.appendChild(dot);
+  });
+
+  function goTo(n) {
+    var slides = track.querySelectorAll('.slide');
+    var dots   = dotsEl.querySelectorAll('.c-dot');
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (n + SLIDES.length) % SLIDES.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    curNum.textContent = current + 1;
+    startProgress();
+  }
+
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  document.getElementById('c-next').addEventListener('click', function () { clearInterval(timer); next(); startAuto(); });
+  document.getElementById('c-prev').addEventListener('click', function () { clearInterval(timer); prev(); startAuto(); });
+
+  function startProgress() {
+    progress.style.transition = 'none';
+    progress.style.width = '0%';
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        progress.style.transition = 'width ' + INTERVAL + 'ms linear';
+        progress.style.width = '100%';
+      });
+    });
+  }
+
+  function startAuto() {
+    clearInterval(timer);
+    timer = setInterval(next, INTERVAL);
+  }
+
+  startProgress();
+  startAuto();
+})();
+</script>
 
 <!-- TRUST BAR -->
 <div class="trust"><div class="trust-in">
@@ -126,7 +547,6 @@
     </div>
   </div>
 </section>
-<style>.sv-ico-card{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:20px 10px;text-align:center;transition:transform .2s}.sv-ico-card:hover{transform:translateY(-4px);border-color:var(--amber)}.sv-ico-card span{font-size:2rem;display:block;margin-bottom:6px}.sv-ico-card p{font-size:.82rem;font-weight:600;color:var(--navy)}</style>
 
 <!-- REVIEWS -->
 <section class="sec">
@@ -169,16 +589,26 @@
 <footer class="footer">
   <div class="ft">
     <div class="fb">
-      <div class="brand" style="margin-bottom:14px"><div class="b-logo">PCC</div><div><span class="b-name">Param Computer Centre</span><span class="b-tag">Giaspura, Ludhiana</span></div></div>
+      <div class="brand" style="margin-bottom:14px">
+        <div class="b-logo">PCC</div>
+        <div><span class="b-name">Param Computer Centre</span><span class="b-tag">Giaspura, Ludhiana</span></div>
+      </div>
       <p>Your trusted partner for computer education and digital services since 2018. Building skills, building futures.</p>
     </div>
     <div class="fc"><h4>Quick Links</h4><a href="index.html">Home</a><a href="about.html">About Us</a><a href="courses.html">Courses</a><a href="services.html">Services</a><a href="contact.html">Contact</a></div>
     <div class="fc"><h4>Courses</h4><a href="courses.html">DCA</a><a href="courses.html">ADCA</a><a href="courses.html">Basic Computer</a><a href="courses.html">Advance Excel</a><a href="courses.html">Tally ERP 9 + GST</a></div>
-    <div class="fc"><h4>Contact</h4><p>📍 Pritam Colony, 33 Feet Road,<br>Giaspura, Ludhiana, Punjab</p><p>📞 <a href="tel:7888782544">7888782544</a></p><p>📞 <a href="tel:7508436951">7508436951</a></p><p>🕐 Mon–Sat: 9AM – 7PM</p></div>
+    <div class="fc">
+      <h4>Contact</h4>
+      <p>📍 Pritam Colony, 33 Feet Road,<br>Giaspura, Ludhiana, Punjab</p>
+      <p>📞 <a href="tel:7888782544">7888782544</a></p>
+      <p>📞 <a href="tel:7508436951">7508436951</a></p>
+      <p>🕐 Mon–Sat: 9AM – 7PM</p>
+    </div>
   </div>
   <div class="fb2"><p>© 2025 Param Computer Centre. All Rights Reserved. | Giaspura, Ludhiana</p></div>
 </footer>
 
-<script src="config.js"></script><script src="app.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
